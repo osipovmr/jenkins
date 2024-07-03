@@ -4,7 +4,7 @@ networks:
 
 services:
   jenkins:
-    image: jenkins/jenkins:lts-jdk17
+    image: jenkins/jenkins:latest
     container_name: jenkins
     networks:
       - jenkins
@@ -13,10 +13,7 @@ services:
       - 50000:50000
     volumes:
       - jenkins-data:/var/jenkins_home
-    environment:
-      - JENKINS_OPTS="--prefix=/jenkins"
     restart: always
-
 #  nexus:
 #    image: sonatype/nexus3:3.37.3
 #    container_name: nexus

@@ -8,3 +8,10 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+FROM jenkins/jenkins:lts-jdk17
+USER root
+RUN apt-get update && apt-get install -y maven
+
+USER jenkins
