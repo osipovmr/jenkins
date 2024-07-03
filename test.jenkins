@@ -3,6 +3,9 @@
 properties([disableConcurrentBuilds()])
 pipeline {
     agent any
+    tools {
+        maven 'Maven 3.8.4'
+    }
     options {
         timestamps()
     }
@@ -14,7 +17,9 @@ pipeline {
         }
         stage('Build JAR') {
             steps {
-                sh "mvn clean package"
+                withMaven {
+                    sh "mvn clean package"
+                }
             }
         }
     }
