@@ -27,7 +27,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    def dockerContainer = dockerImage.run()
+                    docker.image('hello-world:latest').withRun('-p "8888:8888')
                 }
             }
         }
