@@ -12,7 +12,7 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build') {
+        stage('Build JAR') {
             steps {
                 sh 'mvn clean package'
             }
