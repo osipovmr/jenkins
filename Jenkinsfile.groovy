@@ -17,5 +17,12 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    def dockerImage = docker.build("hello-world:latest", "-f Dockerfile .")
+                }
+            }
+        }
     }
 }

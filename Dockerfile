@@ -4,9 +4,9 @@
 #COPY pom.xml /app
 #RUN mvn clean package
 #
-#FROM openjdk:17-jdk-alpine
-#WORKDIR /app
-#COPY --from=build /app/target/*.jar app.jar
-#ENTRYPOINT ["java", "-jar", "app.jar"]
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
+COPY target/jenkins-1.0-SNAPSHOT.jar /app/jenkins.jar
+ENTRYPOINT ["java", "-jar", "jenkinsвщслук.jar"]
 
 
