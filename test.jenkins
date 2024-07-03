@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build JAR') {
             steps {
-                sh './mvnw package'
+                sh 'mvn clean package'
             }
         }
     }
