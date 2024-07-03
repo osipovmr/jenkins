@@ -1,0 +1,23 @@
+#!groovy
+
+properties([disableConcurrentBuilds()])
+pipeline {
+    agent {
+        label 'master'
+    }
+    options {
+        timestamps()
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    }
+}

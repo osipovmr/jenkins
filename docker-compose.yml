@@ -6,6 +6,8 @@ services:
   jenkins:
     image: jenkins/jenkins:lts-jdk17
     container_name: jenkins
+    networks:
+      - jenkins
     ports:
       - 8080:8080
       - 50000:50000
@@ -14,7 +16,24 @@ services:
     environment:
       - JENKINS_OPTS="--prefix=/jenkins"
     restart: always
-    networks:
-      - jenkins
+
+#  nexus:
+#    image: sonatype/nexus3:3.37.3
+#    container_name: nexus
+#    ports:
+#      - 8081:8081
+#      - 5000:5000
+#    networks:
+#      - jenkins
+#  app:
+#    build: .
+#    ports:
+#      - 8080:8080
+#    environment:
+#      - NEXUS_URL=http://nexus:8081/repository/maven-releases
+#    depends_on:
+#      - nexus
+
 volumes:
+  #  nexus-data:
   jenkins-data:
