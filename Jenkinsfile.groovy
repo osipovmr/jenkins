@@ -52,10 +52,10 @@ pipeline {
                             ]
                     )
 
-                    // Publish Docker Image to Nexus
-                    docker.withRegistry('http://nexus:5000') {
-                        docker.image('hello-world').push('latest')
-                    }
+//                    // Publish Docker Image to Nexus
+//                    docker.withRegistry('http://nexus:5000') {
+//                        docker.image('hello-world').push('latest')
+//                    }
                 }
             }
         }
