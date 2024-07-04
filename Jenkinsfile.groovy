@@ -46,6 +46,7 @@ pipeline {
                             artifacts: [
                                     [artifactId: 'dh-jenkins',
                                      classifier: '',
+                                     extension : 'jar',
                                      file      : 'target/jenkins-1.0-SNAPSHOT.jar',
                                      type      : 'jar']
                             ]
@@ -53,7 +54,7 @@ pipeline {
 
                     // Publish Docker Image to Nexus
                     docker.withRegistry('http://nexus:5000') {
-                        docker.image('hello-world:latest').push('latest')
+                        docker.image('hello-world').push('latest')
                     }
                 }
             }
