@@ -53,7 +53,7 @@ pipeline {
 
                     // Publish Docker Image to Nexus
                     docker.withRegistry('http://nexus:5000') {
-                        dockerImage.push('latest')
+                        docker.image('hello-world:latest').push('latest')
                     }
                 }
             }
