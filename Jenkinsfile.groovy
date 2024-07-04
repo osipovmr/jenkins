@@ -40,6 +40,7 @@ pipeline {
                             protocol: 'http',
                             nexusUrl: 'nexus:8081',
                             groupId: 'dh-osipov',
+                            credentialsId: 'nexus-credentials',
                             version: '1.0.0',
                             repository: 'maven-releases',
                             artifacts: [
