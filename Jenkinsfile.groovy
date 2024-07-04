@@ -45,7 +45,7 @@ pipeline {
                             artifacts: [
                                     [artifactId: 'dh-jenkins',
                                      classifier: '',
-                                     file      : 'target/jenkins.jar',
+                                     file      : 'target/jenkins-1.0-SNAPSHOT.jar',
                                      type      : 'jar']
                             ]
                     )
