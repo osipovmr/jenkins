@@ -31,5 +31,31 @@ pipeline {
                 }
             }
         }
+        stage('Publish to Nexus') {
+            steps {
+                script {
+                    // Publish JAR to Nexus
+                    nexusArtifactUploader(
+                            nexusVersion: 'nexus3',
+                            protocol: 'http',
+                            nexusUrl: 'http://nexus:8081/nexus',
+                            groupId: 'com.example',
+                            version: '1.0.0',
+                            repository: 'maven-releases',
+                            artifacts: [
+                                    [artifactId: 'dh-jenkins',
+                                     classifier: '',
+                                     file      : 'target/jenkins.jar',
+                                     type      : 'jar']
+                            ]
+                    )
+
+                    // Publish Docker Image to Nexus
+                    docker.withRegistry('http://nexus:5000') {
+                        dockerImage.push('latest')
+                    }
+                }
+            }
+        }
     }
 }

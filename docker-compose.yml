@@ -16,23 +16,17 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
 
-#  nexus:
-#    image: sonatype/nexus3:3.37.3
-#    container_name: nexus
-#    ports:
-#      - 8081:8081
-#      - 5000:5000
-#    networks:
-#      - jenkins
-#  app:
-#    build: .
-#    ports:
-#      - 8080:8080
-#    environment:
-#      - NEXUS_URL=http://nexus:8081/repository/maven-releases
-#    depends_on:
-#      - nexus
+  nexus:
+    image: sonatype/nexus3:3.37.3
+    container_name: nexus
+    ports:
+      - 8081:8081
+      - 5000:5000
+    volumes:
+      - nexus-data:/nexus-data
+    networks:
+      - jenkins
 
 volumes:
-  #  nexus-data:
+  nexus-data:
   jenkins-data:
