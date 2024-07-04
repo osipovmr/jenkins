@@ -38,7 +38,7 @@ pipeline {
                     nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            nexusUrl: 'nexus:8081/nexus',
+                            nexusUrl: 'nexus:8081',
                             groupId: 'dh-osipov',
                             version: '1.0.0',
                             repository: 'maven-releases',
