@@ -38,8 +38,8 @@ pipeline {
                     nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            nexusUrl: 'http://nexus:8081/nexus',
-                            groupId: 'com.example',
+                            nexusUrl: 'nexus:8081/nexus',
+                            groupId: 'dh-osipov',
                             version: '1.0.0',
                             repository: 'maven-releases',
                             artifacts: [
